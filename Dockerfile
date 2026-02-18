@@ -4,7 +4,7 @@ FROM node:18-alpine
 # Run as non-root
 RUN addgroup -S nodegrp && adduser -S nodeusr -G nodegrp
 
-WORKDIR /app
+WORKDIR /hello-devops/app
 COPY app/package.json ./
 RUN npm ci --only=production
 COPY app/ ./
