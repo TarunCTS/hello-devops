@@ -4,10 +4,10 @@ FROM node:18-alpine
 # Run as non-root
 RUN addgroup -S nodegrp && adduser -S nodeusr -G nodegrp
 
-WORKDIR /app
-COPY app/package.json ./
+WORKDIR /apps
+COPY apps/package.json ./
 RUN npm ci --only=production
-COPY app/ ./
+COPY apps/ ./
 
 USER nodeusr
 EXPOSE 8080
