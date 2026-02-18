@@ -7,7 +7,7 @@ RUN addgroup -S nodegrp && adduser -S nodeusr -G nodegrp
 WORKDIR /apps
 COPY apps/package.json ./
 RUN npm ci --only=production
-COPY app/ ./
+COPY apps/ ./
 
 USER nodeusr
 EXPOSE 8080
