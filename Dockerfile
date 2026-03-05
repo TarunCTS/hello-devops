@@ -1,16 +1,16 @@
 # Use a small Node base
-FROM node:18-alpine
+FROM node:25.6.0-alpine
 
 # Run as non-root
 RUN addgroup -S nodegrp && adduser -S nodeusr -G nodegrp
 
 WORKDIR /apps
 COPY apps/package.json ./
-RUN npm ci --only=production
+RUN npm install --omit=dev
 COPY apps/ ./
 
 USER nodeusr
 EXPOSE 8080
-ENV PORT=8080
+ENV PORT=8080 NODE_ENV=production
 
 CMD ["npm", "start"]
